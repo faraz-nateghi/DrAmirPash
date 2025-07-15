@@ -54,7 +54,7 @@
                         <div class="blog-single-wrapper">
                             <div class="blog-single-content">
                                 <div class="blog-thumb-img">
-                                    <img src="assets/img/blog/single.jpg" alt="thumb">
+                                    <img src="{{asset("assets/img/blog/single.jpg")}}" alt="thumb">
                                 </div>
                                 <div class="blog-info">
                                     <div class="blog-meta">
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="blog-author">
                                         <div class="blog-author-img">
-                                            <img src="assets/img/blog/author.jpg" alt="">
+                                            <img src="{{asset('assets/img/blog/author.jpg')}}" alt="">
                                         </div>
                                         <div class="author-info">
                                             <h6>نویسنده</h6>

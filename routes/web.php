@@ -1,27 +1,38 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TagController;
+use App\Http\Middleware\Config;
+use App\Http\Middleware\LazyLoadImages;
+use App\Http\Middleware\MainMenu;
+use App\Http\Middleware\MobileMenuItems;
+use App\Http\Middleware\Redirect;
 use Illuminate\Support\Facades\Route;
 
-Route::view('master', 'client.client');
+Route::view('master', 'contact-us.blade.php');
 
 Route::middleware(
     [
-        \App\Http\Middleware\Redirect::class,
-        \App\Http\Middleware\MainMenu::class,
-        \App\Http\Middleware\MobileMenuItems::class,
-        \App\Http\Middleware\Config::class,
-        \App\Http\Middleware\LazyLoadImages::class
+        Redirect::class,
+        MainMenu::class,
+        MobileMenuItems::class,
+        Config::class,
+        LazyLoadImages::class
     ])->group(function () {
-    Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
-    Route::get('categories/{slugs}', \App\Http\Controllers\CategoryController::class)
+    Route::get('/', HomeController::class)->name('home');
+    Route::get('categories/{slugs}', CategoryController::class)
         ->where('slugs', '.*')
         ->name('category.index');
-    Route::get('articles/{alias}', \App\Http\Controllers\ArticleController::class)->name('article.show');
-    Route::get('authors/{alias}', \App\Http\Controllers\AuthorController::class)->name('author.index');
-    Route::get('tags/{alias}', \App\Http\Controllers\TagController::class)->name('tag.index');
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+    Route::get('articles/{alias}', ArticleController::class)->name('article.show');
+    Route::get('authors/{alias}', AuthorController::class)->name('author.index');
+    Route::get('tags/{alias}', TagController::class)->name('tag.index');
     Route::post('create-comment', [CommentController::class, 'store'])->name('comment.store');
     Route::get('contact-us', [ContactController::class, 'index'])->name('contact.index');
     Route::post('contact-form', [ContactController::class, 'store'])->name('contact.store');

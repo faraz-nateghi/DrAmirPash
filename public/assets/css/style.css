@@ -2509,7 +2509,7 @@ blog single css
 
 .blog-author {
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     background: #fff;
     box-shadow: 0 0 40px 5px rgba(0 0 0 .5);

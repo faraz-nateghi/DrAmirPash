@@ -12,6 +12,20 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
+    public function index()
+    {
+        $articles = Article::query()
+            ->where('publish', 1)
+            ->with('author')
+            ->with('categories')
+            ->with('comments', function ($query){
+                $query->where('status', 1);
+            })
+            ->latest()
+            ->paginate(6);
+
+        return view('client.Article.index', compact('articles'));
+    }
     public function __invoke($alias)
     {
         $article = Article::query()
@@ -51,7 +65,7 @@ class ArticleController extends Controller
         $articleTags = $article->tags;
         $siteConfig = \App\Models\Config::first();
         $articleComments = $article->comments;
-        return view('client.article', compact('parentCategories','article', 'relatedArticles', 'lastArticles', 'dataStructureScript', 'categories','articleTags', 'siteConfig','articleComments'));
+        return view('client.Article.show', compact('parentCategories','article', 'relatedArticles', 'lastArticles', 'dataStructureScript', 'categories','articleTags', 'siteConfig','articleComments'));
     }
 
     private function addTOC($article)
