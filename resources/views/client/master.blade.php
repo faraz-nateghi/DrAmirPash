@@ -9,7 +9,7 @@
     <meta name="keywords" content="">
 
     <!-- Title -->
-    <title>@yield('title')</title>
+    <title>@yield('title') | {{ config('app.post_title') }}</title>
 
     <!-- Css -->
     <link rel="icon" type="image/x-icon" href="{{asset('assets/img/logo/favicon.png')}}">

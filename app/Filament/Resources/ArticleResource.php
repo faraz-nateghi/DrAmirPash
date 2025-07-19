@@ -38,13 +38,9 @@ class ArticleResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('titre')
-                    ->required()
                     ->live(debounce: 1000)
                     ->afterStateUpdated(function ($state, callable $set) {
                         $set('alias', fa_slug($state));
-                        $set('title', $state . " | کریپتونگار");
                     })
                     ->maxLength(255),
                 Forms\Components\TextInput::make('alias')
