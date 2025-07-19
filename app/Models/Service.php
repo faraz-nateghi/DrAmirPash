@@ -16,8 +16,14 @@ class Service extends Model implements HasMedia
     protected $fillable = [
         'service_category_id',
         'title',
+        'alias',
+        'keywords',
+        'description',
         'intro_text',
-        'publish'
+        'body',
+        'publish',
+        'index',
+        'follow'
     ];
 
     public function serviceCategory(): BelongsTo

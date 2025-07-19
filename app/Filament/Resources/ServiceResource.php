@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 use App\Filament\Resources\ServiceResource\Pages;
 use App\Filament\Resources\ServiceResource\RelationManagers;
 use App\Models\Service;
@@ -25,17 +26,32 @@ class ServiceResource extends Resource
             ->schema([
                 Forms\Components\Select::make('service_category_id')
                     ->relationship('serviceCategory', 'title')
-                    ->required()
-                    ->native(false),
+                    ->columnSpanFull()
+                    ->required(),
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(191),
+                Forms\Components\TextInput::make('alias')
+                    ->required()
+                    ->maxLength(191),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('image')
+                ->columnSpanFull(),
+                Forms\Components\Textarea::make('keywords')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('intro_text')
-                    ->columnSpanFull()
-                    ->default(null),
+                    ->columnSpanFull(),
+                TinyEditor::make('body')
+                    ->profile('full')
+                    ->rtl()
+                    ->columnSpan('full')
+                    ->required(),
                 Forms\Components\Toggle::make('publish')
+                    ->required(),
+                Forms\Components\Toggle::make('index')
+                    ->required(),
+                Forms\Components\Toggle::make('follow')
                     ->required(),
             ]);
     }
@@ -49,9 +65,13 @@ class ServiceResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('intro_text')
+                Tables\Columns\TextColumn::make('alias')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('publish')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('index')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('follow')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

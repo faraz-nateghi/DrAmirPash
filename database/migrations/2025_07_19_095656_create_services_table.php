@@ -15,8 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_category_id')->constrained('service_categories');
             $table->string('title');
+            $table->string('alias')->unique();
+            $table->text('keywords')->nullable();
+            $table->text('description')->nullable();
             $table->text('intro_text')->nullable();
+            $table->longText('body')->nullable();
             $table->boolean('publish')->default(false);
+            $table->boolean('index')->default(1);
+            $table->boolean('follow')->default(1);
             $table->timestamps();
         });
     }

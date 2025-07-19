@@ -35,8 +35,6 @@ class ArticleResource extends Resource
     {
         return $form
             ->schema([
-//                Forms\Components\Hidden::make('old_image'),
-
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
@@ -87,9 +85,6 @@ class ArticleResource extends Resource
 //                Forms\Components\RichEditor::make('body')
 //                    ->columnSpanFull(),
                 TinyEditor::make('body')
-                    ->fileAttachmentsDisk('wp')
-                    ->fileAttachmentsVisibility('public')
-                    ->fileAttachmentsDirectory(fn() => "wp-content/uploads/" . Carbon::now()->format('Y/m/d'))
                     ->profile('full')
                     ->rtl()
                     ->columnSpan('full')
