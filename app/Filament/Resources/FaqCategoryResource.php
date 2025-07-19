@@ -17,6 +17,8 @@ class FaqCategoryResource extends Resource
 {
     protected static ?string $model = FaqCategory::class;
 
+    protected static ?string $navigationGroup = 'Home Widgets';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

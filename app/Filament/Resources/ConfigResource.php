@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ConfigResource extends Resource
 {
     protected static ?string $model = Config::class;
+    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

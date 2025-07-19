@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
+    protected static ?string $navigationGroup = 'Blog';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class MobileMenuItemResource extends Resource
 {
     protected static ?string $model = MobileMenuItem::class;
+    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

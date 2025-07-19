@@ -22,6 +22,7 @@ use Illuminate\Support\Str;
 class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
+    protected static ?string $navigationGroup = 'Blog';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

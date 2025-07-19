@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class RedirectResource extends Resource
 {
     protected static ?string $model = Redirect::class;
+    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
