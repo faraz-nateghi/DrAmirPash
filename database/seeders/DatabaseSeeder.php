@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,5 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(CaregoriesTableSeeder::class);
         $this->call(ConfigsTableSeeder::class);
+        $this->call(FaqSeeder::class);
+        $this->call(TagsSeeder::class);
+        $this->call(ServicesSeeder::class);
     }
 }

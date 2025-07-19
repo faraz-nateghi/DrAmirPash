@@ -24,7 +24,7 @@ class ArticleController extends Controller
             ->latest()
             ->paginate(6);
 
-        return view('client.Article.index', compact('articles'));
+        return view('client.category', compact('articles'));
     }
     public function __invoke($alias)
     {
@@ -65,7 +65,7 @@ class ArticleController extends Controller
         $articleTags = $article->tags;
         $siteConfig = \App\Models\Config::first();
         $articleComments = $article->comments;
-        return view('client.Article.show', compact('parentCategories','article', 'relatedArticles', 'lastArticles', 'dataStructureScript', 'categories','articleTags', 'siteConfig','articleComments'));
+        return view('article', compact('parentCategories','article', 'relatedArticles', 'lastArticles', 'dataStructureScript', 'categories','articleTags', 'siteConfig','articleComments'));
     }
 
     private function addTOC($article)

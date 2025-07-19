@@ -159,189 +159,44 @@
                 </div>
             </div>
         </div>
-        <div class="service-area bg py-16 pt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 mx-auto">
-                        <div class="site-heading text-center">
-                            <span class="site-title-tagline">خدمات</span>
-                            <h2 class="site-title">خدمات <span>زیبایی</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="assets/img/service/01.jpg" alt="">
-                            </div>
-                            <div class="service-content">
-                                <div class="service-content-info">
-                                    <div class="service-icon">
-                                        <svg class="icon icon-holed-tooth">
-                                            <use xlink:href="#holed-tooth"></use>
-                                        </svg>
-                                    </div>
-                                    <h3 class="service-title">
-                                        <a href="#">ایمپلنت های دندانی</a>
-                                    </h3>
-                                </div>
-                                <p class="service-text">
-                                    انواع مختلفی از معابر موجود است، اما اکثریت آن ها آسیب دیده اند
-                                    تغییر تزریق شده
-                                </p>
-                                <div class="service-arrow">
-                                    <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
-                                </div>
+        @foreach ($serviceCategories as $category)
+            <div class="service-area bg py-16 pt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="site-heading text-center">
+                                <span class="site-title-tagline">خدمات</span>
+                                <h2 class="site-title">خدمات <span>{{ $category->title }}</span></h2>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="assets/img/service/02.jpg" alt="">
-                            </div>
-                            <div class="service-content">
-                                <div class="service-content-info">
-                                    <div class="service-icon">
-                                        <svg class="icon icon-mouth-prop">
-                                            <use xlink:href="#mouth-prop"></use>
-                                        </svg>
+                    <div class="row">
+                        @foreach ($category->services as $service)
+                            <div class="col-md-6 col-lg-4">
+                                <div class="service-item">
+                                    <div class="service-img">
+                                        <img src="{{ asset('assets/img/service/01.jpg')}}">
                                     </div>
-                                    <h3 class="service-title">
-                                        <a href="#">دندانپزشکی زیبایی</a>
-                                    </h3>
-                                </div>
-                                <p class="service-text">
-                                    انواع مختلفی از معابر موجود است، اما اکثریت آن ها آسیب دیده اند
-                                    تغییر تزریق شده
-                                </p>
-                                <div class="service-arrow">
-                                    <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="assets/img/service/03.jpg" alt="">
-                            </div>
-                            <div class="service-content">
-                                <div class="service-content-info">
-                                    <div class="service-icon">
-                                        <svg class="icon icon-inner-tooth">
-                                            <use xlink:href="#inner-tooth"></use>
-                                        </svg>
+                                    <div class="service-content">
+                                        <div class="service-content-info">
+                                            <h3 class="service-title">
+                                                <a href="#">{{ $service->title }}</a>
+                                            </h3>
+                                        </div>
+                                        <p class="service-text">
+                                            {{ \Illuminate\Support\Str::limit($service->intro_text, 100) }}
+                                        </p>
+                                        <div class="service-arrow">
+                                            <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
+                                        </div>
                                     </div>
-                                    <h3 class="service-title">
-                                        <a href="#">سفید کردن دندان</a>
-                                    </h3>
-                                </div>
-                                <p class="service-text">
-                                    انواع مختلفی از معابر موجود است، اما اکثریت آن ها آسیب دیده اند
-                                    تغییر تزریق شده
-                                </p>
-                                <div class="service-arrow">
-                                    <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="service-area bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 mx-auto">
-                        <div class="site-heading text-center">
-                            <h2 class="site-title">خدمات <span>پزشکی</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="assets/img/service/01.jpg" alt="">
-                            </div>
-                            <div class="service-content">
-                                <div class="service-content-info">
-                                    <div class="service-icon">
-                                        <svg class="icon icon-holed-tooth">
-                                            <use xlink:href="#holed-tooth"></use>
-                                        </svg>
-                                    </div>
-                                    <h3 class="service-title">
-                                        <a href="#">ایمپلنت های دندانی</a>
-                                    </h3>
-                                </div>
-                                <p class="service-text">
-                                    انواع مختلفی از معابر موجود است، اما اکثریت آن ها آسیب دیده اند
-                                    تغییر تزریق شده
-                                </p>
-                                <div class="service-arrow">
-                                    <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="assets/img/service/02.jpg" alt="">
-                            </div>
-                            <div class="service-content">
-                                <div class="service-content-info">
-                                    <div class="service-icon">
-                                        <svg class="icon icon-mouth-prop">
-                                            <use xlink:href="#mouth-prop"></use>
-                                        </svg>
-                                    </div>
-                                    <h3 class="service-title">
-                                        <a href="#">دندانپزشکی زیبایی</a>
-                                    </h3>
-                                </div>
-                                <p class="service-text">
-                                    انواع مختلفی از معابر موجود است، اما اکثریت آن ها آسیب دیده اند
-                                    تغییر تزریق شده
-                                </p>
-                                <div class="service-arrow">
-                                    <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="assets/img/service/03.jpg" alt="">
-                            </div>
-                            <div class="service-content">
-                                <div class="service-content-info">
-                                    <div class="service-icon">
-                                        <svg class="icon icon-inner-tooth">
-                                            <use xlink:href="#inner-tooth"></use>
-                                        </svg>
-                                    </div>
-                                    <h3 class="service-title">
-                                        <a href="#">سفید کردن دندان</a>
-                                    </h3>
-                                </div>
-                                <p class="service-text">
-                                    انواع مختلفی از معابر موجود است، اما اکثریت آن ها آسیب دیده اند
-                                    تغییر تزریق شده
-                                </p>
-                                <div class="service-arrow">
-                                    <a href="#" class="theme-btn">ادامه مطلب <span class="far fa-arrow-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
         <div class="testimonial-area bg py-120">
             <div class="container">
                 <div class="row">
@@ -559,10 +414,9 @@
                             <div class="blog-item-img">
                                 <img src="{{asset('assets/img/blog/01.jpg')}}" alt="شست">
                             </div>
-
                             <div class="blog-item-info">
                                 <h4 class="blog-title">
-                                    <a href="{{route('article.show',$lastArticle->alias)}}">{{$lastArticle->title}}</a>
+                                    <a href="{{route('article.show',$lastArticle->alias)}}">{{$lastArticle->titre}}</a>
                                 </h4>
                                 <div class="blog-item-meta">
                                     <ul>
@@ -570,7 +424,7 @@
                                         <li><a href="{{route('article.show',$lastArticle->alias)}}"><i class="far fa-calendar-alt"></i>{{verta($lastArticle->created_at)->format('%Y M %d')}}</a></li>
                                     </ul>
                                 </div>
-                                <p>{{ \Illuminate\Support\Str::limit($lastArticle->body, 100) }}</p>
+                                <p>{{ \Illuminate\Support\Str::limit($lastArticle->intro_text, 100) }}</p>
                                 <a class="blog-btn" href="{{route('article.show',$lastArticle->alias)}}">ادامه مطلب <i class="far fa-arrow-right"></i></a>
                             </div>
                         </div>
