@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'post_title' => env('APP_POST_TITLE', 'دکتر امیر پاشا ابراهیمی'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

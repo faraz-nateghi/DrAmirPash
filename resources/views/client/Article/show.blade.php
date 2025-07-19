@@ -14,9 +14,9 @@
 {{--    <meta property="og:description" content="{{ $article->description }}" />--}}
 {{--    <meta property="og:url" content="{{ URL::current() }}" />--}}
 {{--    <meta property="og:site_name" content="کریپتونگار" />--}}
-{{--    <meta property="article:section" content="{{ $article->mainCategory()->titre }}" />--}}
+{{--    <meta property="article:section" content="{{ $article->mainCategory()->title }}" />--}}
 {{--    <meta property="og:updated_time" content="{{ $article->updated_at }}" />--}}
-{{--    <meta property="og:image:alt" content="{{ $article->titre }}" />--}}
+{{--    <meta property="og:image:alt" content="{{ $article->title }}" />--}}
 {{--    <meta name="twitter:card" content="summary_large_image" />--}}
 {{--    <meta name="twitter:title" content="{{ $article->title }}" />--}}
 {{--    <meta name="twitter:description" content="{{ $article->description }}" />--}}
@@ -54,15 +54,15 @@
                         <div class="blog-single-wrapper">
                             <div class="blog-single-content">
                                 <div class="blog-thumb-img">
-                                    <img src="{{asset("assets/img/blog/single.jpg")}}" alt="thumb">
+                                    <img src="{{ \App\Services\MediaService::defaultMedia($article) }}" alt="thumb">
                                 </div>
                                 <div class="blog-info">
                                     <div class="blog-meta">
                                         <div class="blog-meta-left">
                                             <ul>
                                                 <li><i class="far fa-user"></i><a
-                                                        href="#">{{$article->author->name}}</a></li>
-                                                <li><i class="far fa-comments"></i>{{$article->comments->count()}} نظر
+                                                        href="#">{{ $article->author->name }}</a></li>
+                                                <li><i class="far fa-comments"></i>{{ $article->comments->count() }} نظر
                                                 </li>
                                                 {{--                                                <li><i class="far fa-thumbs-up"></i>1.4 هزار لایک</li>--}}
                                             </ul>
@@ -73,7 +73,7 @@
                                         </div>
                                     </div>
                                     <div class="blog-details">
-                                        <h3 class="blog-details-title mb-20">{{$article->titre}}</h3>
+                                        <h3 class="blog-details-title mb-20">{{$article->title}}</h3>
                                         <div class="mb-10">
                                             {!! $article->description !!}
                                         </div>
@@ -217,7 +217,7 @@
                                         <img src="{{asset('assets/img/blog/bs-1.jpg')}}" alt="thumb">
                                     </div>
                                     <div class="recent-post-bio">
-                                        <h6><a href="#">{{$lastArticle->titre}}</a></h6>
+                                        <h6><a href="#">{{$lastArticle->title}}</a></h6>
                                         <span><i class="far fa-clock"></i>{{ verta($lastArticle->created_at)->format('%d %B %Y') }}</span>
                                     </div>
                                     @endforeach

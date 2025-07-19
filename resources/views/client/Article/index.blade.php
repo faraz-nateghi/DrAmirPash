@@ -37,7 +37,7 @@
                         @foreach($articles as $article)
                             <div class="blog-item">
                                 <div class="blog-item-img">
-                                    <img src="{{asset('assets/img/blog/01.jpg')}}" alt="شست">
+                                    <img src="{{ \App\Services\MediaService::defaultMedia($article) }}" alt="شست">
                                 </div>
                                 <div class="blog-item-info">
                                     <h4 class="blog-title">
