@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,8 @@ class HomeController extends Controller
             ->with('services', function ($query){
                 $query->where('publish', 1)->inRandomOrder()->limit(3);
             })->get();
+        $lastVideos = Video::query()->where('publish', 1)->orderBy('id', 'desc')->get();
         $faqs = Faq::query()->where('publish', 1)->where('show_in_home', 1)->get();
-        return view('client.index', compact('lastArticles','faqs','serviceCategories'));
+        return view('client.index', compact('lastArticles','faqs','serviceCategories','lastVideos'));
     }
 }

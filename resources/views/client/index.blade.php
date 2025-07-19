@@ -320,46 +320,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="team-item position-relative video-wrapper">
-                            <video src="{{ asset('assets/video/01.mp4') }}" controls playsinline width="100%" preload="none"></video>
-                            <div class="video-cover" onclick="playVideo(this)">
-                                <img src="{{ asset('assets/img/team/01.jpg') }}" alt="کاور ویدیو">
-                                <div class="play-button"></div>
+                @foreach($lastVideos as $video)
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="team-item position-relative video-wrapper">
+                                <video
+                                    src="{{ \App\Services\MediaService::defaultMedia($video, 'video') }}"
+                                    controls
+                                    playsinline
+                                    width="100%"
+                                    preload="none"
+                                ></video>
+
+                                <div class="video-cover" onclick="playVideo(this)">
+                                    <img
+                                        src="{{ \App\Services\MediaService::defaultMedia($video, 'cover') }}"
+                                        alt="کاور ویدیو"
+                                    >
+                                    <div class="play-button"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="team-item position-relative video-wrapper">
-                            <video src="{{ asset('assets/video/01.mp4') }}" controls playsinline width="100%" preload="none"></video>
-                            <div class="video-cover" onclick="playVideo(this)">
-                                <img src="{{ asset('assets/img/team/01.jpg') }}" alt="کاور ویدیو">
-                                <div class="play-button"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="team-item position-relative video-wrapper">
-                            <video src="{{ asset('assets/video/01.mp4') }}" controls playsinline width="100%" preload="none"></video>
-                            <div class="video-cover" onclick="playVideo(this)">
-                                <img src="{{ asset('assets/img/team/01.jpg') }}" alt="کاور ویدیو">
-                                <div class="play-button"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="team-item position-relative video-wrapper">
-                            <video src="{{ asset('assets/video/01.mp4') }}" controls playsinline width="100%" preload="none"></video>
-                            <div class="video-cover" onclick="playVideo(this)">
-                                <img src="{{ asset('assets/img/team/01.jpg') }}" alt="کاور ویدیو">
-                                <div class="play-button"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
         <div class="faq-area bg py-120">
             <div class="container">
                 <div class="row">
@@ -373,7 +359,7 @@
                                 اما اکثریت دچار تغییراتی به شکلی شده اند، با شوخ طبعی تزریقی، یا
                                 کلمات تصادفی که یکنواخت به نظر نمی رسند.</p>
                             <p>این یک واقعیت ثابت شده است که خواننده هنگام تماشای طرح بندی آن، با محتوای قابل خواندن یک صفحه، حواسش پرت می شود. </p>
-                            <a href="#" class="theme-btn mt-5">سوالت را بپرس <i class="far fa-arrow-right"></i></a>
+                            <a href="{{route('faqs.index')}}" class="theme-btn mt-5">سوالات بیشتر<i class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-6">

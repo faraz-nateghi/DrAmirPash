@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TagController;
@@ -35,6 +36,7 @@ Route::middleware(
     Route::get('tags/{alias}', TagController::class)->name('tag.index');
     Route::post('create-comment', [CommentController::class, 'store'])->name('comment.store');
     Route::get('contact-us', [ContactController::class, 'index'])->name('contact.index');
+    Route::get('faqs', [FaqController::class, 'index'])->name('faqs.index');
     Route::post('contact-form', [ContactController::class, 'store'])->name('contact.store');
 
     Route::get('search', [SearchController::class, 'index'])->name('search.index');

@@ -778,7 +778,6 @@ c-17 23 -50 53 -73 66 -48 27 -133 37 -177 20z"></path>
     </symbol>
 </svg>
 <header class="header">
-
     <div class="header-top">
         <div class="container">
             <div class="header-top-wrapper">
@@ -786,93 +785,76 @@ c-17 23 -50 53 -73 66 -48 27 -133 37 -177 20z"></path>
                     <div class="header-top-contact">
                         <ul>
                             <li><a href="#"><i class="far fa-map-marker-alt"></i>خیابان میلفورد 25/B، نیویورک</a></li>
-                            <li><a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8ddc0d9d5c8d4dd96dbd7d5"><i class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="c8a1a6aea788adb0a9a5b8a4ade6aba7a5">[email&#160;protected]</span></a></li>
+                            <li><a href="#"><i class="far fa-envelope"></i>[ایمیل شما]</a></li>
                             <li><a href="#"><i class="far fa-clock"></i>یکشنبه - جمعه (08 صبح تا 10 شب)</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="header-top-right">
                     <div class="header-top-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="{{request()->config->facebook}}"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{request()->config->telegram}}"><i class="fab fa-telegram"></i></a>
+                        <a href="{{request()->config->instagram}}"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:{{request()->config->email}}"><i class="fa fa-envelope"></i></a>
+                        <a href="{{request()->config->youtube}}"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="main-navigation">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html" >
-                    <img src="assets/img/logo/logo.png"  alt="لوگو">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('assets/img/logo/logo.png') }}" alt="لوگو">
                 </a>
                 <div class="mobile-menu-right">
                     <a href="#" class="mobile-search-btn search-box-outer"><i class="far fa-search"></i></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
                         <span class="navbar-toggler-icon"><i class="far fa-bars"></i></span>
                     </button>
                 </div>
+
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">خانه</a>
-                            <ul class="dropdown-menu fade-up">
-                                <li><a class="dropdown-item" href="index.html" >صفحه اصلی 01</a></li>
-                                <li><a class="dropdown-item" href="index02.html" >صفحه اصلی 02</a></li>
-                                <li><a class="dropdown-item" href="index03.html" >صفحه اصلی 03</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="about.html" > درباره ما </a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">دندانپزشک</a>
-                            <ul class="dropdown-menu fade-up">
-                                <li><a class="dropdown-item" href="dentist.html" >دندانپزشک</a></li>
-                                <li><a class="dropdown-item" href="dentist-single.html" > جزییات صفحه دندانپزشک</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">صفحات</a>
-                            <ul class="dropdown-menu fade-up">
-                                <li><a class="dropdown-item" href="about.html" >درباره ما</a></li>
-                                <li><a class="dropdown-item" href="team.html" >اعضای تیم</a></li>
-                                <li><a class="dropdown-item" href="pricing.html" >قیمت گذاری ما</a></li>
-                                <li><a class="dropdown-item" href="appointment.html" >وقت ملاقات</a></li>
-                                <li><a class="dropdown-item" href="gallery.html" >گالری</a></li>
-                                <li><a class="dropdown-item" href="faq.html" >راهنما</a></li>
-                                <li><a class="dropdown-item" href="login.html" >ورود</a></li>
-                                <li><a class="dropdown-item" href="register.html" >ثبت نام</a></li>
-                                <li><a class="dropdown-item" href="forgot-password.html" >فراموشی رمز عبور</a></li>
-                                <li><a class="dropdown-item" href="404.html" >404 ارور</a></li>
-                                <li><a class="dropdown-item" href="coming-soon.html" >بزودی</a></li>
-                                <li><a class="dropdown-item" href="terms.html" >شرایط استفاده از خدمات</a></li>
-                                <li><a class="dropdown-item" href="privacy.html" >سیاست حفظ حریم خصوصی</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">خدمات</a>
-                            <ul class="dropdown-menu fade-up">
-                                <li><a class="dropdown-item" href="service.html" >خدمات</a></li>
-                                <li><a class="dropdown-item" href="service-single.html" >جزئیات خدمات</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">وبلاگ</a>
-                            <ul class="dropdown-menu fade-up">
-                                <li><a class="dropdown-item" href="blog.html" >وبلاگ</a></li>
-                                <li><a class="dropdown-item" href="blog-single.html" > جزییات صفحه وبلاگ</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html" >تماس با ما</a></li>
+                        @php $mainMenu = request()->mainMenu; @endphp
+
+                        @foreach($mainMenu as $menu)
+                            @if ($menu->children->isNotEmpty())
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle {{ request()->is($menu->url) ? 'active' : '' }}"
+                                       href="#" data-bs-toggle="dropdown">
+                                        {{ $menu->titre }}
+                                    </a>
+                                    <ul class="dropdown-menu fade-up">
+                                        @foreach($menu->children as $child)
+                                            <li>
+                                                <a class="dropdown-item {{ request()->is($child->url) ? 'active' : '' }}"
+                                                   href="{{ url($child->url) }}">
+                                                    {{ $child->titre }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->is($menu->url) ? 'active' : '' }}"
+                                       href="{{ url($menu->url) }}">
+                                        {{ $menu->titre }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
+
                     <div class="header-nav-right">
                         <div class="header-nav-search">
                             <a href="#" class="search-box-outer"><i class="far fa-search"></i></a>
                         </div>
                         <div class="header-btn">
-                            <a href="#" class="theme-btn">وقت ملاقات<i class="far fa-arrow-right"></i></a>
+                            <a href="#" class="theme-btn">وقت ملاقات <i class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -890,3 +872,4 @@ c-17 23 -50 53 -73 66 -48 27 -133 37 -177 20z"></path>
         </div>
     </form>
 </div>
+
