@@ -219,7 +219,28 @@ Version         : 1.1
 
 })(jQuery);
 
+function playVideo(coverElement) {
+    const wrapper = coverElement.closest('.video-wrapper');
+    const video = wrapper.querySelector('video');
 
+    // 1. مخفی کردن کاور با انیمیشن
+    coverElement.classList.add('fade-out');
+
+    // 2. پخش ویدیو
+    video.play();
+
+    // 3. توقف سایر ویدیوها
+    document.querySelectorAll('.video-wrapper video').forEach((v) => {
+        if (v !== video) {
+            v.pause();
+            v.currentTime = 0; // اختیاری: برگردوندن به اول
+            const otherCover = v.closest('.video-wrapper').querySelector('.video-cover');
+            if (otherCover) {
+                otherCover.classList.remove('fade-out'); // کاور ویدیوهای دیگه دوباره نمایش داده میشه
+            }
+        }
+    });
+}
 
 
 

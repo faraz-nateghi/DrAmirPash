@@ -12,10 +12,8 @@ class MenuItemSeeder extends Seeder
      */
     public function run(): void
     {
-        // پاک‌سازی جدول برای جلوگیری از تکراری شدن
         MenuItem::truncate();
 
-        // منوهای اصلی (سطح اول)
         $topMenus = [
             'خانه' => ['type' => 'dropdown'],
             'صفحات' => ['type' => 'dropdown'],
