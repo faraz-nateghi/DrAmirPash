@@ -16,19 +16,28 @@ class MainMenu
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $menuItems = MenuItem::query()->where('publish', 1)->get();
-
-        $mainMenu = collect();
-
-        foreach ($menuItems as $menuItem) {
-            if ($menuItem->parent_id == -1) {
-                $menuItem->children = $menuItems->where('parent_id', $menuItem->id);
-                $mainMenu->push($menuItem);
-            }
-        }
+        $menuItems = MenuItem::query()
+            ->where('publish', 1)
+            ->orderBy('order')
+            ->get();
+        $mainMenu = $this->buildMenuTree($menuItems, -1);
 
         $request->mainMenu = $mainMenu;
 
         return $next($request);
     }
+
+    private function buildMenuTree($items, $parentId)
+    {
+        $children = $items->filter(fn ($item) => $item->parent_id == $parentId)
+            ->sortBy('order')
+            ->values();
+
+        foreach ($children as $child) {
+            $child->children = $this->buildMenuTree($items, $child->id);
+        }
+
+        return $children;
+    }
+
 }

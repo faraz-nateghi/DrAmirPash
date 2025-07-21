@@ -4538,3 +4538,26 @@ home-3
     background-size: 50% 50%;
     mask-size: 50% 50%;
 }
+/* موقعیت‌دهی به زیرمنوهای داخل زیرمنو */
+.dropdown-submenu {
+    position: relative;
+}
+
+/* منوهای تو در تو باید از سمت راست پدیدار بشن */
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0;
+    margin-left: -1px;
+    display: none !important;
+    position: absolute;
+    z-index: 9999; /* بالاتر از منوی مادر */
+    min-width: 200px;
+}
+
+/* وقتی روی dropdown-submenu هاور شد، زیرمنوش باز شه */
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block !important;
+}
+
+
