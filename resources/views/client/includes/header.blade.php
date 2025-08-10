@@ -792,11 +792,11 @@ c-17 23 -50 53 -73 66 -48 27 -133 37 -177 20z"></path>
                 </div>
                 <div class="header-top-right">
                     <div class="header-top-social">
-                        <a href="{{request()->config->facebook}}"><i class="fab fa-facebook-f"></i></a>
-                        <a href="{{request()->config->telegram}}"><i class="fab fa-telegram"></i></a>
-                        <a href="{{request()->config->instagram}}"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:{{request()->config->email}}"><i class="fa fa-envelope"></i></a>
-                        <a href="{{request()->config->youtube}}"><i class="fab fa-youtube"></i></a>
+                        <a href="{{ request()->config->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ request()->config->telegram }}"><i class="fab fa-telegram"></i></a>
+                        <a href="{{ request()->config->instagram }}"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:{{ request()->config->email }}"><i class="fa fa-envelope"></i></a>
+                        <a href="{{ request()->config->youtube }}"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -818,35 +818,44 @@ c-17 23 -50 53 -73 66 -48 27 -133 37 -177 20z"></path>
 
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav">
-                        @php $mainMenu = request()->mainMenu; @endphp
+                        @php
+                            function renderMenu($items, $level = 0) {
+                                foreach ($items as $item) {
+                                    $hasChildren = $item->children->isNotEmpty();
+                                    $active = request()->is($item->url) ? 'active' : '';
 
-                        @foreach($mainMenu as $menu)
-                            @if ($menu->children->isNotEmpty())
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle {{ request()->is($menu->url) ? 'active' : '' }}"
-                                       href="#" data-bs-toggle="dropdown">
-                                        {{ $menu->titre }}
-                                    </a>
-                                    <ul class="dropdown-menu fade-up">
-                                        @foreach($menu->children as $child)
-                                            <li>
-                                                <a class="dropdown-item {{ request()->is($child->url) ? 'active' : '' }}"
-                                                   href="{{ url($child->url) }}">
-                                                    {{ $child->titre }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link {{ request()->is($menu->url) ? 'active' : '' }}"
-                                       href="{{ url($menu->url) }}">
-                                        {{ $menu->titre }}
-                                    </a>
-                                </li>
-                            @endif
-                        @endforeach
+                                    if ($hasChildren) {
+                                        $liClass = $level === 0 ? 'nav-item dropdown' : 'dropdown-submenu';
+                                        $aClass = $level === 0 ? 'nav-link dropdown-toggle' : 'dropdown-item dropdown-toggle';
+
+                                        echo '<li class="' . $liClass . '">';
+                                        echo '<a href="#" class="' . $aClass . ' ' . $active . '">';
+                                        echo e($item->titre);
+                                        echo '</a>';
+                                        echo '<ul class="dropdown-menu">';
+                                        renderMenu($item->children, $level + 1);
+                                        echo '</ul>';
+                                        echo '</li>';
+                                    } else {
+                                        if ($level === 0) {
+                                            echo '<li class="nav-item">';
+                                            echo '<a class="nav-link ' . $active . '" href="' . url($item->url) . '">';
+                                            echo e($item->titre);
+                                            echo '</a>';
+                                            echo '</li>';
+                                        } else {
+                                            echo '<li>';
+                                            echo '<a class="dropdown-item ' . $active . '" href="' . url($item->url) . '">';
+                                            echo e($item->titre);
+                                            echo '</a>';
+                                            echo '</li>';
+                                        }
+                                    }
+                                }
+                            }
+
+                            renderMenu(request()->mainMenu);
+                        @endphp
                     </ul>
 
                     <div class="header-nav-right">
@@ -872,4 +881,5 @@ c-17 23 -50 53 -73 66 -48 27 -133 37 -177 20z"></path>
         </div>
     </form>
 </div>
+
 
